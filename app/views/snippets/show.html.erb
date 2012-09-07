@@ -1,0 +1,55 @@
+<div>
+  <form class="form-search">
+    <input type="text" maxlength='50' class="input-extra-large ">
+    <button type="submit" class="btn btn-primary">Go</button>
+  </form>
+</div>
+<hr />
+
+<div class='snippet no-border' style='width:100%;overflow:auto;'>
+  <div class='snippet-image' style='float:left'>
+    <%= image_tag @snippet.snippet_detail.photo.url(:thumb) %>
+  </div>
+  <div>
+    <div class='posted_date'>Snippet:<%= @snippet.id %> <%= @snippet.posted_date %></div>
+    <div class='title'><%= @snippet.title %></div>
+    <div class='description'><%= truncate(@snippet.description, :length => 150) %></div>
+  </div>
+</div>
+
+<br />
+
+<div class='detail-panel'>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs"  data-tabs="tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Code</a></li>
+      <li><a href="#tab2" data-toggle="tab">Screencast</a></li>
+      <li><a href="#tab3" data-toggle="tab">Queries</a></li>
+    </ul>
+    
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <p>
+          <%= @snippet.snippet_detail.detail.html_safe %>
+        </p>
+      </div>
+      
+      <div class="tab-pane" id="tab2">
+        <input id='vdeo' value="<%= @snippet.video_url %>" type='hidden' />
+        <% if @snippet.video_present? %>
+          <div>
+            <div id="video-panel">Loading the player ...</div>
+          </div>
+        <% else %>
+          <div> Screencast not available </div>
+        <% end %>
+        
+      </div>
+      <div class="tab-pane" id="tab3">
+        <p>Howdy, I'm in Section 3.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

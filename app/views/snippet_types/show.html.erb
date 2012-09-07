@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @snippet_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @snippet_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_snippet_type_path(@snippet_type) %> |
+<%= link_to 'Back', snippet_types_path %>

@@ -1,0 +1,38 @@
+<div>
+  <form class="form-search">
+    <input type="text" name="query" value="<%= params[:query] %>" maxlength='50' 
+            class="input-extra-large ">
+    <button type="submit" class="btn btn-primary">Go</button>
+  </form>
+</div>
+<hr />
+
+
+<div>
+  <% @snippets.each do |snippet| %>
+  <div class='snippet' style='width:100%;overflow:auto;'>
+    <div class='snippet-image' style='float:left'>
+     <%= link_to image_tag(snippet.snippet_detail.photo.url(:thumb)), snippet %>
+    </div>
+    <div>
+      <div class='posted_date'>Snippet:<%= snippet.id %> <%= snippet.posted_date %></div>
+      <div class='title'><%= link_to snippet.title, snippet %></div>
+      <div class='description'><%= truncate(snippet.description, :length => 150) %></div>
+      <div class='controls'>
+        <a href="/snippets/<%= snippet.id %>#tab1" class="btn btn-primary">View Details</a>  
+        <a href="/snippets/<%= snippet.id %>#tab2" class="btn btn-primary">View Screencast</a>  
+        <a href="/snippets/<%= snippet.id %>#tab3" class="btn btn-danger">Post Query</a>  
+      </div>
+    </div>
+  </div>
+   <% end %>
+</div>
+
+
+<% link_to t('.new', :default => t("helpers.links.new")),
+            new_snippet_path,
+            :class => 'btn btn-primary' %>
+            
+            
+    
+

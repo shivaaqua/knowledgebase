@@ -1,0 +1,2 @@
+module SnippetTypesHelper
+end

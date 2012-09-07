@@ -1,0 +1,18 @@
+<% snippet = @snippets.first %>
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit">
+  <h1><%= snippet.try(:title) %></h1>
+  <p><%= snippet.try(:description) %></p>
+  <p><a class="btn btn-primary btn-large">View Details &raquo;</a></p>
+</div>
+
+<!-- Example row of columns -->
+<div class="row">
+  <% (@snippets - [snippet]).each do |s| %> 
+    <div class="span4">
+    <h2><%= s.try(:title) %></h2>
+    <p><%= s.try(:description) %></p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+  <% end %>
+</div>

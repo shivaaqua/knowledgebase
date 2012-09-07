@@ -1,0 +1,18 @@
+<%= simple_form_for @snippet, :html => { :class => 'form-horizontal snippet-form' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :snippet_type_id %>
+  <%= f.input :description %>
+  <%= f.fields_for :snippet_detail do |d| %>
+    <%= d.input :detail %>
+      <br />
+    Picture <%= d.file_field :photo %>
+    Screencast <%= d.file_field :video %>
+  <% end %>
+  
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                snippets_path, :class => 'btn' %>
+  </div>
+<% end %>
+
